@@ -1,7 +1,6 @@
+from omtk import constants
 from omtk.core import classRig
 from omtk.core import className
-from omtk.core import consts_omtk
-
 
 class CradleNomenclature(className.BaseName):
 
@@ -12,11 +11,13 @@ class CradleNomenclature(className.BaseName):
 
 
 class RigCradle(classRig.Rig):
+    DEFAULT_UPP_AXIS = constants.Axis.y
+    LEGACY_ARM_IK_CTRL_ORIENTATION = True
+    LEGACY_LEG_IK_CTRL_ORIENTATION = True
 
     def __init__(self, *args, **kwargs):
         super(RigCradle, self).__init__(*args, **kwargs)
         self._color_ctrl = True
-        self._up_axis = consts_omtk.Axis.y
 
     def _get_nomenclature_cls(self):
         return CradleNomenclature
