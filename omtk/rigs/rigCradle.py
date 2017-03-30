@@ -11,6 +11,10 @@ class CradleNomenclature(className.BaseName):
 
 
 class RigCradle(classRig.Rig):
+    """
+    Custom rig implementation in respect to Cradle Studio nomenclature
+    """
+
     DEFAULT_UPP_AXIS = constants.Axis.y
     LEGACY_ARM_IK_CTRL_ORIENTATION = True
     LEGACY_LEG_IK_CTRL_ORIENTATION = True
@@ -22,9 +26,8 @@ class RigCradle(classRig.Rig):
     def _get_nomenclature_cls(self):
         return CradleNomenclature
 
-    def pre_build(self, create_master_grp=True, create_grp_jnt=True, create_grp_anm=True,
-                  create_grp_rig=True, create_grp_geo=True, create_display_layers=True):
-        super(RigCradle, self).pre_build(create_master_grp=create_master_grp)
+    def pre_build(self):
+        super(RigCradle, self).pre_build(create_master_grp=True, create_layer_jnt=True)
         
 def register_plugin():
     return RigCradle
